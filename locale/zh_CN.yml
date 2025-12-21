@@ -1,0 +1,16 @@
+electrolysis743-userip-custom:
+  # For more details on the format
+  # Checkout https://docs.flarum.org/2.x/extend/i18n/#appendix-a-standard-key-format
+  admin:
+    apiurl_label: "自定义API URL"
+    apiurl_placeholder: "在这里输入自定义URL，如：https://api.example.com/v1/ip/{ip}"
+    country_code_expression_label: "国家代码JSONPath表达式"
+    country_code_expression_placeholder: "请输入国家代码JSONPath表达式"
+    region_expression_label: "地区JSONPath表达式"
+    region_expression_placeholder: "请输入地区JSONPath表达式"
+    isp_expression_label: "ISP JSONPath表达式"
+    isp_expression_placeholder: "请输入ISP JSONPath表达式"
+    save_settings_button: "保存设置"
+    save_settings_success: "设置已成功保存！"
+    save_settings_error: "保存设置时出错。请稍后再试。"
+    save_settings_loading: "正在保存设置..."

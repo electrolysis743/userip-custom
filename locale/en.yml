@@ -1,0 +1,16 @@
+electrolysis743-userip-custom:
+  # For more details on the format
+  # Checkout https://docs.flarum.org/2.x/extend/i18n/#appendix-a-standard-key-format
+  admin:
+    apiurl_label: "Custom API URL"
+    apiurl_placeholder: "Enter a custom URL here, e.g., https://api.example.com/v1/ip/{ip}"
+    country_code_expression_label: "Country Code JSONPath Expression"
+    country_code_expression_placeholder: "Please enter the Country Code JSONPath expression"
+    region_expression_label: "Region JSONPath Expression"
+    region_expression_placeholder: "Please enter the Region JSONPath expression"
+    isp_expression_label: "ISP JSONPath Expression"
+    isp_expression_placeholder: "Please enter the ISP JSONPath expression"
+    save_settings_button: "Save Settings"
+    save_settings_success: "Settings saved successfully!"
+    save_settings_error: "An error occurred while saving settings. Please try again later."
+    save_settings_loading: "Saving settings..."
