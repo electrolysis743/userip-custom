@@ -19,4 +19,15 @@ return [
         ->js(__DIR__.'/js/dist/admin.js'),
         
     new Extend\Locales(__DIR__.'/locale'),
+
+    (new Extend\Routes('api'))
+        ->post('/my-extension/settings', 'myextension.save-settings', Api\Controller\SaveSettingsController::class),
+
+    (new Extend\Settings())
+        ->serializeToAdmin('userip_custom_api_url', 'userip-custom.api_url')
+        ->serializeToAdmin('userip_custom_country_code', 'userip-custom.country_code')
+        ->serializeToAdmin('userip_custom_region', 'userip-custom.region')
+        ->serializeToAdmin('userip_custom_isp', 'userip-custom.isp')
+        // 为设置键设置默认值
+        ->default('userip-custom.api_url', 'https://api.example.com/v1/ip/{ip}')
 ];

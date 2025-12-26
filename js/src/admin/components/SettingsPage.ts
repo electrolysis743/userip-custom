@@ -5,17 +5,17 @@ import type Mithril from 'mithril';
 
 interface CustomSettings {
   apiurl: string;
-  CountryCode_expression?: string; // 国家代码
-  Region_expression?: string; // 地区
-  Isp_expression?: string; // ISP
+  CountryCode?: string; // 国家代码
+  Region?: string; // 地区
+  Isp?: string; // ISP
 }
 
 export default class SettingsPage extends Component {
   private settings: CustomSettings = {
     apiurl: 'https://api.example.com/v1/ip/{ip}',
-    CountryCode_expression: undefined,
-    Region_expression: undefined,
-    Isp_expression: undefined,
+    CountryCode: undefined,
+    Region: undefined,
+    Isp: undefined,
   };
 
   private isLoading = false;
@@ -25,10 +25,10 @@ export default class SettingsPage extends Component {
 
     // 初始化设置
     this.settings = {
-      apiurl: app.data.settings['userip-custom.api_url'] || 'https://api.example.com/v1/ip/{ip}',
-      CountryCode_expression: app.data.settings['userip-custom.country_code_expression'] || undefined,
-      Region_expression: app.data.settings['userip-custom.region_expression'] || undefined,
-      Isp_expression: app.data.settings['userip-custom.isp_expression'] || undefined,
+      apiurl: app.data.settings['userip_custom_api_url'] || 'https://api.example.com/v1/ip/{ip}',
+      CountryCode: app.data.settings['userip_custom_country_code'] || undefined,
+      Region: app.data.settings['userip_custom_region'] || undefined,
+      Isp: app.data.settings['userip_custom_isp'] || undefined,
     };
   }
 
@@ -53,9 +53,9 @@ export default class SettingsPage extends Component {
             m('label', app.translator.trans('userip-custom.admin.country_code_expression_label')),
             m('input.FormControl', {
               type: 'text',
-              value: this.settings.CountryCode_expression,
+              value: this.settings.CountryCode,
               oninput: (e: Event) => {
-                this.settings.CountryCode_expression = (e.target as HTMLInputElement).value;
+                this.settings.CountryCode = (e.target as HTMLInputElement).value;
               },
               placeholder: app.translator.trans('userip-custom.admin.country_code_expression_placeholder'),
             }),
@@ -65,9 +65,9 @@ export default class SettingsPage extends Component {
             m('label', app.translator.trans('userip-custom.admin.region_expression_label')),
             m('input.FormControl', {
               type: 'text',
-              value: this.settings.Region_expression,
+              value: this.settings.Region,
               oninput: (e: Event) => {
-                this.settings.Region_expression = (e.target as HTMLInputElement).value;
+                this.settings.Region = (e.target as HTMLInputElement).value;
               },
               placeholder: app.translator.trans('userip-custom.admin.region_expression_placeholder'),
             }),
@@ -77,9 +77,9 @@ export default class SettingsPage extends Component {
             m('label', app.translator.trans('userip-custom.admin.isp_expression_label')),
             m('input.FormControl', {
               type: 'text',
-              value: this.settings.Isp_expression,
+              value: this.settings.Isp,
               oninput: (e: Event) => {
-                this.settings.Isp_expression = (e.target as HTMLInputElement).value;
+                this.settings.Isp = (e.target as HTMLInputElement).value;
               },
               placeholder: app.translator.trans('userip-custom.admin.isp_expression_placeholder'),
             }),
@@ -110,10 +110,10 @@ export default class SettingsPage extends Component {
         method: 'POST',
         url: app.forum.attribute('apiUrl') + '/settings',
         body: {
-          'userip-custom.api_url': this.settings.apiurl,
-          'userip-custom.country_code_expression': this.settings.CountryCode_expression,
-          'userip-custom.region_expression': this.settings.Region_expression,
-          'userip-custom.isp_expression': this.settings.Isp_expression,
+          'userip_custom_api_url': this.settings.apiurl,
+          'userip_custom_country_code': this.settings.CountryCode,
+          'userip_custom_region': this.settings.Region,
+          'userip_custom_isp': this.settings.Isp,
         },
         headers: {
           'Content-Type': 'application/json',
@@ -127,7 +127,6 @@ export default class SettingsPage extends Component {
 
       // 重新加载页面以应用设置
       setTimeout(() => {
-        // m.redraw(); // 或者仅重绘
         window.location.reload();
       }, 1000);
     } catch (error: any) {
